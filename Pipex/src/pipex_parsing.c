@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: octavie <octavie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 08:54:18 by octavie           #+#    #+#             */
-/*   Updated: 2025/04/13 16:50:17 by octavie          ###   ########.fr       */
+/*   Updated: 2025/04/17 11:16:43 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "pipex.h"
 
@@ -53,7 +52,7 @@ char	*get_path_env(char **env)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strnstr("PATH=", env[i], 5) == 0)
+		if (ft_strncmp("PATH=", env[i], 5) == 0)
 			return (env[i] + 5);
 		i++;
 	}

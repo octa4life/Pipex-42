@@ -7,21 +7,22 @@ SRC_DIR	= src
 OBJ_DIR	= objs
 INC_DIR	= includes
 
-# Sources files
+# Sources
 _SRCS = pipex.c pipex_parsing.c pipex_utils.c
 SRCS = $(addprefix $(SRC_DIR)/, $(_SRCS))
 
+# Objets
 _OBJS = $(_SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR)/, $(_OBJS))
 
-# Path to libft library
+# Libft
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)-o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -48,5 +49,4 @@ bonus: re
 
 test: all
 	./$(NAME)
-
 .PHONY:	all clean fclean re bonus test

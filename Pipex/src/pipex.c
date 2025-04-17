@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: octavie <octavie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 08:53:42 by octavie           #+#    #+#             */
-/*   Updated: 2025/04/13 16:52:11 by octavie          ###   ########.fr       */
+/*   Updated: 2025/04/17 09:44:45 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void	exec_fork2(t_pipex *pipex)
 	exit(1);
 }
 
-int	main(int ac, char **av, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	t_pipex	*pipex;
 
-	if (ac != 5)
+	if (argc != 5)
 		(ft_putstr_fd("usage : <infile > <cm1> <cm2> <outfile>\n", 2), exit(1));
-	pipex = init_struct(av, env);
+	pipex = init_struct(argv, env);
 	if (pipe(pipex->pipe_fd) == -1)
 		(close(pipex->infile), close(pipex->outfile), free(pipex));
-	create_check_path(pipex, av[2]);
+	create_check_path(pipex, argv[2]);
 	if (pipex->path)
 		fork1(pipex, 1);
-	create_check_path(pipex, av[3]);
+	create_check_path(pipex, argv[3]);
 	if (pipex->path)
 		fork2(pipex, 2);
 	return (close_all(pipex), wait(NULL), wait(NULL),
