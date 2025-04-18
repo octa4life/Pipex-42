@@ -6,7 +6,7 @@
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:05:24 by obellil-          #+#    #+#             */
-/*   Updated: 2025/01/28 17:06:35 by obellil-         ###   ########.fr       */
+/*   Updated: 2025/04/18 09:46:03 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_putstr(char *str)
 {
-	int i = 0;
+	int	i;
 
-	while(str[i])
+	i = 0;
+	while (str[i])
 		write(1, &str[i++], 1);
 }

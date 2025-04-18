@@ -6,7 +6,7 @@
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 08:54:16 by octavie           #+#    #+#             */
-/*   Updated: 2025/04/17 11:01:58 by obellil-         ###   ########.fr       */
+/*   Updated: 2025/04/18 09:04:16 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ t_pipex	*init_struct(char **av, char **env)
 		exit(1);
 	pipex->infile = open(av[1], O_RDONLY, 0644);
 	if (pipex->infile == -1)
-		(ft_putstr_fd("fail to open infile\n", 2));
+		(ft_putstr_fd("bash: infile: Permission denied\n", 2));
 	pipex->outfile = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex->outfile == -1)
-		(ft_putstr_fd("fail to open outfile\n", 2));
+		(ft_putstr_fd("bash: outfile: Permission denied\n", 2));
 	pipex->env = env;
 	return (pipex);
 }
