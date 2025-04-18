@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 18:39:39 by obellil-          #+#    #+#             */
-/*   Updated: 2024/11/11 18:43:13 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/30 16:18:40 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:51:56 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,9 @@ int	ft_putchar(char c)
 	write(1, &c, 1);
 	return (1);
 }
+
+/*int main()
+{
+	char c = 'c';
+	ft_putchar(c);
+}*/

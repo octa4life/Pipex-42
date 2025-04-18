@@ -5,18 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:05:24 by obellil-          #+#    #+#             */
-/*   Updated: 2025/04/18 09:46:03 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/29 23:07:26 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:52:39 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
 	while (str[i])
-		write(1, &str[i++], 1);
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

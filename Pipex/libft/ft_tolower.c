@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 14:52:59 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/28 15:54:29 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 20:34:33 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:55:00 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	else
+	if (c > 90 || c < 65)
 		return (c);
+	return (c + 32);
 }
-/*
-int	main(void)
-{
-	printf("%d", ft_tolower('B'));
-	return (0);
-}
-*/

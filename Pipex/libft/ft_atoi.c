@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 14:38:37 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/29 14:01:39 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 16:55:48 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:50:10 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,28 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int		i;
-	int		sign;
-	long	vartempo;
+	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
-	sign = 1;
-	vartempo = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	sign = 1;
+	while (nptr[i] == '+' || nptr[i] == '-')
 	{
-		sign -= (nptr[i] == '-') * 2;
+		if ((nptr[i] == '+' || nptr[i] == '-')
+			&& (nptr[i + 1] == '+' || nptr[i + 1] == '-'))
+			return (0);
+		else if (nptr[i] == '-')
+			sign = -1;
 		i++;
 	}
+	result = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
-		vartempo = vartempo * 10 + (nptr[i++] - '0');
-	return (vartempo * sign);
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
-/*
-int	main(void)
-{
-	char	*c;
-	int		n;
-
-	c = "+1234ab567";
-	//printf("%d",);
-	n = ft_atoi(c);
-	printf("%d",n);
-}
-*/

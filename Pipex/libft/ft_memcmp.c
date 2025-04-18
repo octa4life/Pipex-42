@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 10:54:07 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:19:07 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 16:24:15 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:50:07 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,18 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*str1;
-	const unsigned char	*str2;
+	size_t				i;
+	const unsigned char	*p1 = s1;
+	const unsigned char	*p2 = s2;
 
-	str1 = (const unsigned char *)s1;
-	str2 = (const unsigned char *)s2;
-	while (n--)
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n)
 	{
-		if (*str1 != *str2)
-			return (*str1 - *str2);
-		if (n)
-		{
-			str1++;
-			str2++;
-		}
+		if (p1[i] != p2[i])
+			return (p1[i] - p2[i]);
+		i++;
 	}
 	return (0);
 }
-/*
-int main(void)
-{
-    char	*str1 = "Coucou23";
-	
-	char	*str2 = "Couco584";
-
-	int	nbr = 6;
-	printf("%d", ft_memcmp(str1,str2,nbr));
-	return(0);
-}
-*/

@@ -5,73 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 13:06:17 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/29 15:01:37 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 17:56:53 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:52:56 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	countw(const char *s, char c)
+static int	count_words(char const *str, char c)
 {
-	int	count;
+	int		in_word;
+	int		result;
+
+	result = 0;
+	in_word = 0;
+	while (*str)
+	{
+		if ((*str != c) && in_word == 0)
+		{
+			in_word = 1;
+			result++;
+		}
+		else if (*str == c)
+			in_word = 0;
+		str++;
+	}
+	return (result);
+}
+
+static int	word_lenght(const char *s, char c)
+{
 	int	i;
 
-	count = 0;
 	i = 0;
-	while (s[i])
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+static void	*free_tab(char **tab, int len_tab)
+{
+	int	i;
+
+	i = 0;
+	if (tab[0] == NULL)
+		return (NULL);
+	while (i < len_tab)
 	{
-		if (s[i] != c && (i == 0 || s[i - 1] == c))
-			count++;
+		free(tab[i]);
 		i++;
 	}
-	return (count);
-}
-
-static void	*free_all(char **result, int i)
-{
-	while (i-- > 0)
-		free(result[i]);
-	free(result);
+	free(tab);
 	return (NULL);
-}
-
-static char	*next_word(const char *s, char c, int *start)
-{
-	int		end;
-	char	*word;
-
-	end = *start;
-	while (s[end] && s[end] != c)
-		end++;
-	word = ft_substr(s, *start, end - *start);
-	*start = end;
-	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		start;
-	int		wordcount;
-	char	**result;
+	char		**split_tab;
+	int			i;
+	char		*new_str;
+	int			nb_words;
 
-	if (!s)
-		return (NULL);
-	wordcount = countw(s, c);
-	result = (char **)malloc((wordcount + 1) * sizeof(char *));
-	if (!result)
+	nb_words = count_words(s, c);
+	split_tab = malloc((nb_words + 1) * sizeof(char *));
+	if (split_tab == NULL)
 		return (NULL);
 	i = 0;
-	start = 0;
-	while (i < wordcount)
+	while (i < nb_words)
 	{
-		while (s[start] && s[start] == c)
-			start++;
-		result[i] = next_word(s, c, &start);
-		if (!result[i++])
-			return (free_all(result, i - 1));
+		while (*s == c)
+			s++;
+		new_str = ft_substr(s, 0, word_lenght(s, c));
+		if (new_str == NULL)
+			return (free_tab(split_tab, i));
+		split_tab[i] = new_str;
+		s += word_lenght(s, c);
+		i++;
 	}
-	result[i] = NULL;
-	return (result);
+	split_tab[i] = NULL;
+	return (split_tab);
 }

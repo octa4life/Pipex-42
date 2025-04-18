@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 13:50:40 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:19:13 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 16:07:03 by garside           #+#    #+#             */
+/*   Updated: 2025/04/18 14:38:46 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,19 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	char		*d;
-	const char	*s;
+	size_t				i;
+	unsigned char		*p_dest;
+	const unsigned char	*p_src;
 
-	d = (char *)dest;
-	s = (const char *)src;
+	p_dest = (unsigned char *)dest;
+	p_src = (unsigned char *)src;
 	i = 0;
-	if (src == NULL && dest == NULL)
-	{
+	if (!dest && !src)
 		return (NULL);
-	}
 	while (i < n)
 	{
-		d [i] = s[i];
-		i ++;
+		p_dest[i] = p_src[i];
+		i++;
 	}
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char src[] = "Octa, on top";
-	char dest[50]; // je creer un tabl pour la dest
-	
-	ft_memcpy(dest, src, strlen(src)+1);// je copie la src dans la dest
-	
-	printf ("Source: %s\n", src);
-	printf ("Dest: %s\n", dest);
-	return (0);
-}
-*/

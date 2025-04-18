@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 10:12:30 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/24 11:01:02 by obellil-         ###   ########.fr       */
+/*   Created: 2025/04/18 14:48:43 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:48:45 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isprint(int a)
+int	ft_isprint(int c)
 {
-	if (a >= 32 && a <= 126)
-	{
+	if (c >= 32 && c <= 126)
 		return (1);
-	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	printf("%d\n",ft_isprint(' '));
-}
-*/

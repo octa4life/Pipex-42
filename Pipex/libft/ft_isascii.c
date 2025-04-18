@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 09:46:01 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:18:46 by obellil-         ###   ########.fr       */
+/*   Created: 2025/04/18 14:48:30 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:48:34 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isascii(int a)
+int	ft_isascii(int c)
 {
-	if (a >= 0 && a <= 127)
-	{
+	if (c >= 0 && c <= 127)
 		return (1);
-	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	printf("%d\n",ft_isascii(' '));
-}
-*/ 

@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:32:41 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:18:24 by obellil-         ###   ########.fr       */
+/*   Created: 2025/04/18 14:48:00 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:48:01 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 
-int	ft_isalnum(int a)
+int	ft_isalnum(int c)
 {
-	if ((a >= '0' && a <= '9') || (a >= 65 && a <= 90) || (a >= 97 && a <= 122))
-	{
-		return (1);
-	}
-	return (0);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'));
 }
-/*
-int	main(void)
-{
-	printf("%d\n",ft_isalnum('&'));
-}
-*/

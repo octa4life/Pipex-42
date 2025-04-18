@@ -5,23 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 14:15:21 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:18:28 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/14 15:24:13 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:50:17 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_isalpha(int a)
+int	ft_isalpha(int c)
 {
-	if ((a >= 65 && a <= 90) || (a >= 97 && a <= 122))
-		return (1);
-	return (0);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
-/*
-int	main(void)
-{
-	printf("%d\n",ft_isalpha('%'));
-
-}
-*/

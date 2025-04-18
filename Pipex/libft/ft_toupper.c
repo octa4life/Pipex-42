@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 11:59:07 by obellil-          #+#    #+#             */
-/*   Updated: 2024/11/08 13:09:07 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 20:20:27 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:55:07 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
+	if (c > 122 || c < 97)
 		return (c);
+	return (c - 32);
 }
-/*
-int	main(void)
-{
-	printf("%d", ft_toupper('a'));
-	return (0);
-}
-*/

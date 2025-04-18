@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 16:00:52 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 17:19:26 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 18:07:30 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:53:10 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 char	*ft_strdup(const char *s)
 {
-	char	*ptr;
-	size_t	i;
+	int		len;
+	char	*str;
+	int		i;
 
 	i = 0;
-	ptr = malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (ptr == NULL)
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (str == NULL)
 		return (NULL);
-	while (s[i])
+	while (i < len)
 	{
-		ptr[i] = s[i];
+		str[i] = s[i];
 		i++;
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	str[i] = '\0';
+	return (str);
 }

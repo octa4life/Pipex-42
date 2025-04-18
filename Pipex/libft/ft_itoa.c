@@ -5,21 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 17:44:50 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/25 13:14:57 by obellil-         ###   ########.fr       */
+/*   Created: 2025/04/18 14:48:51 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:48:54 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	msize(int n)
+static int	total_len(int n)
 {
 	int	len;
 
-	len = 0;
 	if (n <= 0)
 		len = 1;
-	while (n != 0)
+	else
+		len = 0;
+	while (n)
 	{
 		len++;
 		n /= 10;
@@ -27,29 +28,35 @@ int	msize(int n)
 	return (len);
 }
 
+static char	*convt(int nbr, int len)
+{
+	char	*size_n;
+
+	size_n = (char *)malloc(sizeof(char) * (len + 1));
+	if (!size_n)
+		return (NULL);
+	size_n[len] = '\0';
+	if (nbr < 0)
+	{
+		size_n[0] = '-';
+		nbr = -nbr;
+	}
+	else if (nbr == 0)
+		size_n[0] = '0';
+	while (nbr)
+	{
+		size_n[--len] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
+	return (size_n);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*ptr;
-	int		len;
+	int	len;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	len = msize(n);
-	ptr = (char *)malloc((len + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	ptr[len] = '\0';
-	if (n < 0)
-	{
-		ptr[0] = '-';
-		n = -n;
-	}
-	if (n == 0)
-		ptr[0] = '0';
-	while (n > 0)
-	{
-		ptr[--len] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (ptr);
+	len = total_len(n);
+	return (convt(n, len));
 }

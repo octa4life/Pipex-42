@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 15:05:06 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/29 14:14:05 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 07:24:58 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:53:04 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	u;
+	char	find;
+	int		i;
 
-	u = (unsigned char)c;
-	while (*s != '\0')
+	find = (char)c;
+	i = 0;
+	while (s[i])
 	{
-		if ((unsigned char)*s == u)
-			return ((char *)s);
-		s++;
+		if (s[i] == find)
+			return ((char *)(s + i));
+		i++;
 	}
-	if (u == '\0')
-		return ((char *)s);
+	if (find == '\0')
+		return ((char *)(s + i));
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	const char	*str = "ui tond  ";
-	char		c;
-	char		*res;
-
-	c = 't';
-	res = ft_strchr(str, c);
-	if (res != NULL)
-	{
-		printf(" le caractere '%c'est dans la chaine '%s\n'", c, res);
-	}
-	else
-	{
-		printf("le caractere '%c' n'est pas dans la chaine de caractere \n", c);
-	}
-	return (0);
-}
-*/

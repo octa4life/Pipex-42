@@ -5,39 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 10:14:39 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/28 14:18:57 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 19:53:41 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:53:21 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
+	size_t	len_dst;
+	size_t	len_src;
 	size_t	i;
-	size_t	destlen;
-	size_t	srclen;
 
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	if (size <= len_dst)
+		return (len_src + size);
 	i = 0;
-	destlen = ft_strlen(dest);
-	srclen = ft_strlen(src);
-	if (size <= 0 || destlen >= size)
-		return (srclen + size);
-	while (i < size - destlen - 1 && src[i])
+	while (i < size - len_dst - 1 && src[i])
 	{
-		dest[destlen + i] = src[i];
+		dst[len_dst + i] = src[i];
 		i++;
 	}
-	dest[destlen + i] = '\0';
-	return (destlen + srclen);
+	dst[len_dst + i] = '\0';
+	return (len_dst + len_src);
 }
-/*
-int	main(void)
-{
-	char	dest[100] = "Bonjour";
-
-	char	src [] = "oui";
-	printf("%ld",ft_strlcat(dest,src,10));
-	return (0);
-}
-*/

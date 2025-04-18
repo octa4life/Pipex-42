@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:49:53 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 13:32:31 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/15 14:13:38 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:51:06 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,15 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*i;
-	size_t			b;
+	size_t				i;
+	unsigned char		*conv;
 
-	b = 0;
-	i = (unsigned char *)s;
-	while (b < n)
+	conv = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		i[b] = (unsigned char)c;
-		b++;
+		conv[i] = (char)c;
+		i++;
 	}
-	return (s);
+	return (conv);
 }
-/*
-int	main(void)
-{
-	char str[20] = "ouistiti";
-	ft_memset(str, 'A', 4);
-	printf("%s\n",str);
-	return 0;
-}
-*/

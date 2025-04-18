@@ -5,42 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:30:37 by obellil-          #+#    #+#             */
-/*   Updated: 2025/04/18 09:44:00 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 09:20:46 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:54:37 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	size_t	s2_len;
+	size_t		i;
+	size_t		y;
+	size_t		little_len;
+	char		*p_big;
 
 	i = 0;
-	s2_len = 0;
-	while (s2[s2_len] != '\0')
-		s2_len++;
-	if (s2_len == 0)
-		return ((char *)s1);
-	while (s1[i] != '\0' && i + s2_len <= len)
+	p_big = (char *)big;
+	little_len = ft_strlen(little);
+	if (little_len == 0)
+		return (p_big);
+	while (p_big[i] && i < len)
 	{
-		j = 0;
-		while (s1[i + j] == s2[j] && j < s2_len)
-			j++;
-		if (j == s2_len)
-			return ((char *)(s1 + i));
+		y = 0;
+		while (p_big[i + y] && little[y]
+			&& p_big[i + y] == little[y] && (i + y) < len)
+		{
+			y++;
+		}
+		if (y == little_len)
+			return (p_big + i);
 		i++;
 	}
 	return (NULL);
 }
-
-// int	main(void)
-// {
-// 	char	s1[] = "Hello";
-// 	char	*result;
-
-// 	result = ft_strnstr(s1, ".txt", 13);
-// 	printf("Testing ft_strnstr: %s",result);
-// }

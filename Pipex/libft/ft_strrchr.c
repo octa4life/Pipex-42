@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:40:31 by obellil-          #+#    #+#             */
-/*   Updated: 2024/10/23 10:20:00 by obellil-         ###   ########.fr       */
+/*   Created: 2024/10/16 07:48:39 by obellil-          #+#    #+#             */
+/*   Updated: 2025/04/18 14:54:43 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	char	find;
+	char	*last_occurence;
+	int		i;
 
+	find = (char)c;
+	last_occurence = (NULL);
 	i = 0;
 	while (s[i])
-		i++;
-	while (i >= 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i--;
+		if (s[i] == find)
+			last_occurence = (char *)s;
+		s++;
 	}
-	return (NULL);
+	if (find == '\0')
+		return ((char *)s);
+	return (last_occurence);
 }
-/*
-int	main(void)
-{
-	const char	*str
-	
-	char	c
-	
-	c	= 't';
-	*str	= "t ";
-	char *res = ft_strrchr(str, c);
-
-	if (res != NULL)
-	{
-		printf(" le caractere '%c'est dans la chaine '%s\n'", c, res);
-	}
-	else
-	{
-		printf("le caractere '%c' n'est pas dans la chaine de caractere \n", c);
-	}
-	return (0);
-}
-*/
